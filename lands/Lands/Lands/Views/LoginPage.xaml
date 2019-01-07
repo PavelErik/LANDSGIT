@@ -17,10 +17,8 @@
                 Text="Login">
                 </Label>
                 <Image
-                Source="cube128x128"
-                >
+                Source="cube128x128">
                 </Image>
-
 
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -54,40 +52,38 @@
                     </Entry>
 
                 </Grid>
-
-
-                <StackLayout
-                Orientation="Horizontal"
-                >
-                    <Label
-                    Text="Recordar en este dispositivo"
-                    VerticalOptions="Center"
-                    HorizontalOptions="StartAndExpand"
-                >
-                    </Label>
-                    <Switch
-                    HorizontalOptions="End"
-                    >
-                    </Switch>
-
-                </StackLayout>
-
                 <ActivityIndicator>
 
 
                 </ActivityIndicator>
 
                 <StackLayout
-                Margin="40,0"
-                >
+                Orientation="Horizontal">
+                    <Label
+                    Text="Recordar en este dispositivo"
+                    VerticalOptions="Center"
+                    HorizontalOptions="StartAndExpand">
+                    </Label>
+                    <Switch
+                    HorizontalOptions="End">
+                    </Switch>
+
+                </StackLayout>
+
+                <Label
+                    Text="Forgot your password"
+                    HorizontalOptions="Center"
+                    TextColor="Blue">
+                </Label>
+
+                <StackLayout
+                Margin="40,0">
                     <Button
                 BackgroundColor="Navy"
                 BorderRadius="23"
                 TextColor="White"
                 HeightRequest="46"
-                Text="Login"
-                >
-
+                Text="Login">
 
                     </Button>
 
@@ -96,8 +92,7 @@
                 BorderRadius="23"
                 TextColor="White"
                 HeightRequest="46"
-                Text="Registrar"
-                >
+                Text="Registrar">
 
 
                     </Button>
@@ -106,25 +101,24 @@
 
                 <StackLayout
                 Orientation="Horizontal"
-                Padding="30,0,0,0"
-                              
-                
-                >
+                Padding="30,0,0,0">
                     <Image
                     WidthRequest="70"
                     Source="facelogo"
-                       HorizontalOptions="StartAndExpand"
-                    ></Image>
+                    HorizontalOptions="StartAndExpand">
+
+                    </Image>
                     <Image
                     WidthRequest="70"
                     Source="instragramlogo"
-                       HorizontalOptions="StartAndExpand"
-                    ></Image>
+                    HorizontalOptions="StartAndExpand">
+
+                    </Image>
                     <Image
                     WidthRequest="70"
                     Source="ttwiterlogo"
-                       HorizontalOptions="StartAndExpand"
-                    ></Image>
+                    HorizontalOptions="StartAndExpand">
+                    </Image>
 
                 </StackLayout>
 
