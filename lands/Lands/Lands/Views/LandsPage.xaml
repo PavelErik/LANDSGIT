@@ -3,11 +3,72 @@
     x:Class="Lands.Views.LandsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Lands"
-    BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    Title="Lands">
     <ContentPage.Content>
         <StackLayout Padding="5" BindingContext="{Binding Lands}">
-            <Label FontSize="Large" Text="landss pageeee" />
+            <SearchBar
+                Placeholder="Search"
+                Text="{Binding Filter,Mode=TwoWay}"
+                SearchCommand="{Binding SearchCommand}"
+                >
+             </SearchBar>
+
+            <ListView 
+                BackgroundColor="Silver"
+                HasUnevenRows="true" 
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Lands}"
+                SeparatorVisibility="None"
+                RefreshCommand="{Binding RefreshCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!--<Frame
+                                CornerRadius="20"
+                                HasShadow="true"
+                                Margin="5">-->
+                                <!--<Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectLandCommand}"/>
+                                </Frame.GestureRecognizers>-->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <!--<ColumnDefinition Width="Auto"/>-->
+                                    </Grid.ColumnDefinitions>
+                                    <!--<ffimageloading:CachedImage 
+                                        Grid.Column="0"
+                                        HeightRequest="30"
+                                        Source="{Binding Flag, Converter={StaticResource SvgImageSourceConverter}}"
+                                        WidthRequest="60">
+                                    </ffimageloading:CachedImage>-->
+                                    <StackLayout 
+                                        Grid.Column="0"
+                                        VerticalOptions="Center">
+                                        <Label 
+                                            FontAttributes="Bold"
+                                            FontSize="Medium" 
+                                            Text="{Binding Name}"
+                                            TextColor="Black">
+                                        </Label>
+                                        <Label 
+                                            Text="{Binding Capital}"
+                                            TextColor="Black">
+                                        </Label>
+                                    </StackLayout>
+                                    <Image 
+                                        Grid.Column="1"
+                                        HorizontalOptions="End" 
+                                        Source="ic_chevron_right">
+                                    </Image>
+                                </Grid>
+                            <!--</Frame>-->
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
 
         </StackLayout>

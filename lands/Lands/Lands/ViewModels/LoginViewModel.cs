@@ -21,7 +21,6 @@ namespace Lands.ViewModels
         private bool isRunning;
         private bool isEnabled;
         #endregion
-
         #region Properties
         public string Email
         {

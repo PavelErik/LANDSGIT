@@ -10,12 +10,7 @@
         <ScrollView BindingContext="{Binding Login}">
             <StackLayout Padding="5">
 
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    Text="Login" />
-                <Image Source="cube128x128" WidthRequest="100" />
+                <Image Source="cube128x128" WidthRequest="120" />
 
                 <Grid Margin="10,0" VerticalOptions="CenterAndExpand">
                     <Grid.ColumnDefinitions>
@@ -93,21 +88,21 @@
                 </StackLayout>
 
                 <StackLayout
-                    Padding="30,0,0,0"
+                    Padding="30,0,0,20"
                     Orientation="Horizontal"
                     VerticalOptions="EndAndExpand">
                     <Image
                         HorizontalOptions="StartAndExpand"
                         Source="facelogo"
-                        WidthRequest="70" />
+                        WidthRequest="65" />
                     <Image
                         HorizontalOptions="StartAndExpand"
                         Source="instragramlogo"
-                        WidthRequest="70" />
+                        WidthRequest="65" />
                     <Image
                         HorizontalOptions="StartAndExpand"
                         Source="ttwiterlogo"
-                        WidthRequest="70" />
+                        WidthRequest="65" />
 
                 </StackLayout>
 
