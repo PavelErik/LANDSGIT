@@ -94,7 +94,14 @@
                     <Image
                         HorizontalOptions="StartAndExpand"
                         Source="facelogo"
-                        WidthRequest="65" />
+                        WidthRequest="65">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding LoginFacebookCommand}"
+                                >
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
                     <Image
                         HorizontalOptions="StartAndExpand"
                         Source="instragramlogo"

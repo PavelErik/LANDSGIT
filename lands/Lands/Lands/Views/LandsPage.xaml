@@ -4,10 +4,12 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    BackgroundColor="Silver"
     Title="Lands">
     <ContentPage.Content>
         <StackLayout Padding="5" BindingContext="{Binding Lands}">
             <SearchBar
+                BackgroundColor="Silver"
                 Placeholder="Search"
                 Text="{Binding Filter,Mode=TwoWay}"
                 SearchCommand="{Binding SearchCommand}"
@@ -25,13 +27,15 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <!--<Frame
+                            <Frame
                                 CornerRadius="20"
                                 HasShadow="true"
-                                Margin="5">-->
-                                <!--<Frame.GestureRecognizers>
+                                Margin="5">
+                                
+                                <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SelectLandCommand}"/>
-                                </Frame.GestureRecognizers>-->
+                                </Frame.GestureRecognizers>
+                                
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
@@ -64,7 +68,7 @@
                                         Source="ic_chevron_right">
                                     </Image>
                                 </Grid>
-                            <!--</Frame>-->
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

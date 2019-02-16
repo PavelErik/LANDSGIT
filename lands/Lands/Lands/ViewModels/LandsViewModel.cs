@@ -8,6 +8,7 @@ namespace Lands.ViewModels
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Windows.Input;
     using Xamarin.Forms;
 
@@ -21,10 +22,10 @@ namespace Lands.ViewModels
         #endregion
 
         #region Attributes ---------------------------------------------------------------------------------------------
-        private ObservableCollection<Land> lands;
+        private ObservableCollection<LandItemViewModel> lands;
         private bool isRefreshing;
         private string filter;
-
+      
 
 
         #endregion
@@ -33,7 +34,7 @@ namespace Lands.ViewModels
 
 
         #region Properties ---------------------------------------------------------------------------------------------
-        public ObservableCollection<Land> Lands
+        public ObservableCollection<LandItemViewModel> Lands
         {
             get { return this.lands; }
             set
@@ -57,6 +58,7 @@ namespace Lands.ViewModels
             set
             {
                 SetValue(ref this.filter, value);
+                this.Search();
             }
         }
 
@@ -105,11 +107,43 @@ namespace Lands.ViewModels
 
             }
 
-            var list = (List<Land>)response.Result;
-            this.Lands = new ObservableCollection<Land>(list);
+            MainViewModel.GetInstance().LandsList = (List<Land>)response.Result;
+            this.Lands = new ObservableCollection<LandItemViewModel>(this.ToLandItemViewModel());
             this.IsRefreshing = false;
         }
 
+
+        private IEnumerable<LandItemViewModel> ToLandItemViewModel()
+        {
+            return MainViewModel.GetInstance().LandsList.Select(l => new LandItemViewModel
+            {
+                Alpha2Code = l.Alpha2Code,
+                Alpha3Code = l.Alpha3Code,
+                AltSpellings = l.AltSpellings,
+                Area = l.Area,
+                Borders = l.Borders,
+                CallingCodes = l.CallingCodes,
+                Capital = l.Capital,
+                Cioc = l.Cioc,
+                Currencies = l.Currencies,
+                Demonym = l.Demonym,
+                Flag = l.Flag,
+                Gini = l.Gini,
+                Languages = l.Languages,
+                Latlng = l.Latlng,
+                Name = l.Name,
+                NativeName = l.NativeName,
+                NumericCode = l.NumericCode,
+                Population = l.Population,
+                Region = l.Region,
+                RegionalBlocs = l.RegionalBlocs,
+                Subregion = l.Subregion,
+                Timezones = l.Timezones,
+                TopLevelDomain = l.TopLevelDomain,
+                Translations = l.Translations
+
+            });
+        }
 
 
         #endregion
@@ -123,7 +157,31 @@ namespace Lands.ViewModels
             }
 
         }
+        public ICommand SearchCommand
+        {
+            get
+            {
+                return new RelayCommand(Search);
+            }
 
+        }
+
+        private void Search()
+        {
+            if (string.IsNullOrEmpty(this.filter))
+            {
+
+                
+                this.Lands = new ObservableCollection<LandItemViewModel>(this.ToLandItemViewModel());
+
+            }
+            else
+            {
+                this.Lands = new ObservableCollection<LandItemViewModel>(
+                    this.ToLandItemViewModel().Where(l => l.Name.ToLower().Contains(this.filter.ToLower()) || l.Capital.ToLower().Contains(this.filter.ToLower())));
+
+            }
+        }
 
 
         #endregion
