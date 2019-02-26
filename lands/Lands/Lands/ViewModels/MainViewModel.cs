@@ -12,6 +12,13 @@ namespace Lands.ViewModels
         {
             get; set;
         }
+        public TokenResponse Token
+        {
+            get; set;
+        }
+
+
+
         #endregion
 
         #region ViewModels ----------------------------------------------------------------------------------------
@@ -31,7 +38,8 @@ namespace Lands.ViewModels
         #endregion
 
         #region Constructors----------------------------------------------------------------------------------------
-        public MainViewModel() {
+        public MainViewModel()
+        {
             instance = this;
             this.Login = new LoginViewModel();
         }
@@ -39,7 +47,8 @@ namespace Lands.ViewModels
 
         #region Singleton----------------------------------------------------------------------------------------
         private static MainViewModel instance;
-        public static MainViewModel GetInstance() {
+        public static MainViewModel GetInstance()
+        {
             if (instance == null)
             {
 
