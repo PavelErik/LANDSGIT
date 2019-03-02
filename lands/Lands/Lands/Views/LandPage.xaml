@@ -3,10 +3,23 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Lands.Views.LandPage"
+    xmlns:i18n="clr-namespace:Lands.Helpers"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+
+
+    
     Icon="ic_action_info"
     Title="Information"
     BindingContext="{Binding Main, Source={StaticResource Locator}}">
-    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ffimageloadingsvg:SvgImageSourceConverter x:Key="SvgImageSourceConverter">
+            </ffimageloadingsvg:SvgImageSourceConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Land}"
@@ -21,6 +34,9 @@
                     Text="{Binding Land.Name}"
                     TextColor="Black">
                 </Label>
+                <ffimageloading:CachedImage Source="{Binding Land.Flag, Converter={StaticResource SvgImageSourceConverter}}">
+                </ffimageloading:CachedImage>
+
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -29,9 +45,9 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="0"
-                        Text="Capital"
+                        Text="{i18n:Translate Capital}"
                         TextColor="Black">
-                        <!--Text="{i18n:Translate Capital}"-->
+                       
                     </Label>
                     <Label
                         Grid.Column="1"
@@ -40,7 +56,7 @@
                         Text="{Binding Land.Capital}"
                         TextColor="Black">
                     </Label>
-                    <!--<Label
+                    <Label
                         Grid.Column="0"
                         Grid.Row="1"
                         Text="{i18n:Translate Population}"
@@ -53,6 +69,7 @@
                         Text="{Binding Land.Population, StringFormat='{0:N0}'}"
                         TextColor="Black">
                     </Label>
+                    
                     <Label
                         Grid.Column="0"
                         Grid.Row="2"
@@ -175,7 +192,7 @@
                         Grid.Row="11"
                         Text="{i18n:Translate CIOC}"
                         TextColor="Black">
-                    </Label>-->
+                    </Label>
                     <Label
                         Grid.Column="1"
                         Grid.Row="11"

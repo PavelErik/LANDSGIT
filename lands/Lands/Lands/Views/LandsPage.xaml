@@ -3,9 +3,21 @@
     x:Class="Lands.Views.LandsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+
     BindingContext="{Binding Main, Source={StaticResource Locator}}"
     BackgroundColor="Silver"
     Title="Lands">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ffimageloadingsvg:SvgImageSourceConverter x:Key="SvgImageSourceConverter">
+            </ffimageloadingsvg:SvgImageSourceConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <StackLayout Padding="5" BindingContext="{Binding Lands}">
             <SearchBar
@@ -40,16 +52,16 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
-                                        <!--<ColumnDefinition Width="Auto"/>-->
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <!--<ffimageloading:CachedImage 
+                                    <ffimageloading:CachedImage 
                                         Grid.Column="0"
                                         HeightRequest="30"
                                         Source="{Binding Flag, Converter={StaticResource SvgImageSourceConverter}}"
                                         WidthRequest="60">
-                                    </ffimageloading:CachedImage>-->
+                                    </ffimageloading:CachedImage>
                                     <StackLayout 
-                                        Grid.Column="0"
+                                        Grid.Column="1"
                                         VerticalOptions="Center">
                                         <Label 
                                             FontAttributes="Bold"
@@ -63,7 +75,7 @@
                                         </Label>
                                     </StackLayout>
                                     <Image 
-                                        Grid.Column="1"
+                                        Grid.Column="2"
                                         HorizontalOptions="End" 
                                         Source="ic_chevron_right">
                                     </Image>
